@@ -59,8 +59,12 @@ class Cryptography((abc.ABC):
         g = (sum(self.numericKey[4:8]) + self.numericKey[-1]) % 256
         b = (sum(self.numericKey[8:12]) + self.numericKey[-1]) % 256
         return r, g, b
+                   
+    @abc.abstractmethod
+    def process(self, data):
+        pass               
 
-
+                   
 class Encryptor(Cryptography):
     def __init__(self, user_remark):
         Cryptography.__init__(self, user_remark)
