@@ -5,7 +5,7 @@ also used multithreading while processing data to increase efficiency. """
 
 import os
 import threading
-
+import abc
 
 class KeyGenerator:
     ARMSTRONG_DIGITS = (1, 5, 3, 3, 7, 0, 3, 7, 1, 4, 0, 7)
@@ -46,7 +46,7 @@ class ByteManager:
         return (nibbles[0] << 4) | nibbles[1]
 
 
-class Cryptography():
+class Cryptography((abc.ABC):
     def __init__(self, user_remark):
         self.numericKey = KeyGenerator(user_remark).get_key()
         self.color_index = 0
